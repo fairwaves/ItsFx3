@@ -153,9 +153,9 @@ void RawSignalForm::showRawSignal(const std::vector<float>& data, int channel_nu
     }
 
     if ( !checkBoxShowChannels[ channel_num ]->isChecked() ) {
-        rawPlot->graph( channel_num )->clearData();
+        rawPlot->removeGraph(channel_num);
         if ( cfg->signal_type == SigTypeIQParts ) {
-            rawPlot->graph( channel_num + MAX_CHANS )->clearData();
+            rawPlot->removeGraph( channel_num + MAX_CHANS );
         }
         return;
     }
