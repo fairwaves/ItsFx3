@@ -42,9 +42,11 @@ void HWManager::initHardware(DriverType_t drvType, const char* imageFileName , c
         case DrvTypeLibUsb:
             dev = new FX3Dev();
             break;
+#ifndef NO_CY_API
         case DrvTypeCypress:
             dev = new FX3DevCyAPI();
             break;
+#endif
         case DrvTypeFileSim:
             dev = new FileSimDev( imageFileName, cfg->adc_sample_rate_hz, 4 * 1024 * 1024 );
             break;

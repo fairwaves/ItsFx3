@@ -58,7 +58,7 @@ float_cpx_t determinant(const matrix_t &M) {
 
 matrix_t inverse_matrix(const matrix_t &M) {
     float_cpx_t det = determinant(M);
-    if ( abs(det.q) > 0.0001f ) {
+	if ( fabs(det.q) > 0.0001f ) {
         fprintf( stderr, "Determinant isn't real\n" );
     }
 

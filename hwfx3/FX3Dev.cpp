@@ -416,7 +416,7 @@ fx3_dev_err_t FX3Dev::loadAdditionalFirmware( const char* fw_name, uint32_t stop
             return eres;
         }
         
-        std::this_thread::sleep_for( std::chrono::milliseconds(ADD_FW_LOAD_PAUSE_MS) );
+		std::this_thread::sleep_for( std::chrono::milliseconds(/*ADD_FW_LOAD_PAUSE_MS*/ 20) );
         
         if ( addr[i] == stop_addr ) {
             break;

@@ -1,5 +1,5 @@
 #include "etalometrbase.h"
-
+#include <stdlib.h>
 
 EtalometrBase::EtalometrBase()
 {

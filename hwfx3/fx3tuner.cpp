@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <thread>
 #include <chrono>
+#include <math.h>
 
 #include "fx3tuner.h"
 
@@ -62,7 +63,7 @@ double Fx3Tuner::SetFreq(int pll_idx, double freq) {
     double prec;
 
     for ( int R = 15; R > 0; R-- ) {
-        N = round( f * R );
+		N = round( f * R );
         if ( N >= 48 && N <= 511 ) {
             prec = abs(freq - Ftcxo*(double)N/(double)R);
             fprintf( stderr, "Fx3Tuner::SetFreq( %f MHz ) candidate N=%d, R=%d, prec=%f\n", freq/1.0e6, N, R, prec );
