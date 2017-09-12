@@ -1,21 +1,22 @@
+
 #ifndef VIDEOWIDGETSURFACE_H
 #define VIDEOWIDGETSURFACE_H
 
-#include <QWidget>
-#include <QRect>
-#include <QImage>
 #include <QAbstractVideoSurface>
+#include <QImage>
+#include <QRect>
 #include <QVideoFrame>
 
 class VideoWidgetSurface : public QAbstractVideoSurface
 {
     Q_OBJECT
+
 public:
     VideoWidgetSurface(QWidget *widget, QObject *parent = 0);
 
     QList<QVideoFrame::PixelFormat> supportedPixelFormats(
-             QAbstractVideoBuffer::HandleType handleType = QAbstractVideoBuffer::NoHandle) const;
-    bool isFormatSupported(const QVideoSurfaceFormat &format, QVideoSurfaceFormat *similar) const;
+            QAbstractVideoBuffer::HandleType handleType = QAbstractVideoBuffer::NoHandle) const;
+    bool isFormatSupported(const QVideoSurfaceFormat &format) const;
 
     bool start(const QVideoSurfaceFormat &format);
     void stop();
@@ -28,7 +29,7 @@ public:
     void paint(QPainter *painter);
     QSize getFrameSize() const;
 
- private:
+private:
     QWidget *widget;
     QImage::Format imageFormat;
     QRect targetRect;

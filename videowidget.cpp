@@ -2,7 +2,9 @@
 #include "videowidget.h"
 
 #include "videowidgetsurface.h"
-#include <QtMultimedia>
+
+#include <QtWidgets>
+#include <qvideosurfaceformat.h>
 
 VideoWidget::VideoWidget(QWidget *parent)
     : QWidget(parent)
@@ -10,7 +12,6 @@ VideoWidget::VideoWidget(QWidget *parent)
 {
     setAutoFillBackground(false);
     setAttribute(Qt::WA_NoSystemBackground, true);
-    setAttribute(Qt::WA_PaintOnScreen, true);
 
     QPalette palette = this->palette();
     palette.setColor(QPalette::Background, Qt::black);
@@ -45,7 +46,7 @@ void VideoWidget::paintEvent(QPaintEvent *event)
 
         if (!videoRect.contains(event->rect())) {
             QRegion region = event->region();
-            region.subtracted(videoRect);
+            region = region.subtracted(videoRect);
 
             QBrush brush = palette().background();
 

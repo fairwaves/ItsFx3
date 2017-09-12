@@ -6,18 +6,15 @@
 
 #include <QWidget>
 
-class QAbstractVideoSurface;
-
-class VideoWidgetSurface;
-
 class VideoWidget : public QWidget
 {
     Q_OBJECT
+
 public:
-    explicit VideoWidget(QWidget *parent = 0);
+    VideoWidget(QWidget *parent = 0);
     ~VideoWidget();
 
-    VideoWidgetSurface *videoSurface() const { return surface; }
+    QAbstractVideoSurface *videoSurface() const { return surface; }
 
     QSize sizeHint() const;
     QSize getFrameSize() const;

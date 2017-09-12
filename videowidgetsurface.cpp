@@ -1,6 +1,9 @@
+
 #include "videowidgetsurface.h"
 
-#include <QtMultimedia>
+#include <QtWidgets>
+#include <qabstractvideosurface.h>
+#include <qvideosurfaceformat.h>
 
 VideoWidgetSurface::VideoWidgetSurface(QWidget *widget, QObject *parent)
     : QAbstractVideoSurface(parent)
@@ -24,11 +27,8 @@ QList<QVideoFrame::PixelFormat> VideoWidgetSurface::supportedPixelFormats(
     }
 }
 
-bool VideoWidgetSurface::isFormatSupported(
-        const QVideoSurfaceFormat &format, QVideoSurfaceFormat *similar) const
+bool VideoWidgetSurface::isFormatSupported(const QVideoSurfaceFormat &format) const
 {
-    Q_UNUSED(similar);
-
     const QImage::Format imageFormat = QVideoFrame::imageFormatFromPixelFormat(format.pixelFormat());
     const QSize size = format.frameSize();
 
